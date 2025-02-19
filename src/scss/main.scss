@@ -1,0 +1,18 @@
+$dark_grey: #9A9A9A;
+
+
+
+html {
+  font-family: "KH Teka Mono TRIAL", monospace;
+  color: black;
+}
+body {
+  background-color: $dark_grey;
+  padding: 0.5rem;
+}
+header{
+  position: absolute;
+  right: 0;
+  left: 0.5rem;
+}
+
