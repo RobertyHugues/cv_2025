@@ -1,18 +1,278 @@
-$dark_grey: #9A9A9A;
-
+$white: #E9E9E9;
+$soft_grey: #BBBBBB;
+$back_grey: #9A9A9A;
+$dark_grey: #6C6C6C;
+$soft_black: #202020;
+$orange: #FF573B;
+$blue: #0988F0;
+$green: #008847;
+$yellow: #FFB800;
 
 
 html {
   font-family: "KH Teka Mono TRIAL", monospace;
-  color: black;
+  color: $soft_black;
 }
+
 body {
-  background-color: $dark_grey;
+  background-color: $back_grey;
   padding: 0.5rem;
 }
-header{
+
+/*---------------------------------------nav  */
+header {
   position: absolute;
   right: 0;
   left: 0.5rem;
+  font-size: 1.375rem;
+
+  #menu {
+    display: flex;
+    gap: 0.125rem;
+    flex-wrap: wrap;
+
+
+    li {
+      background-color: $white;
+      color: $soft_black;
+      border-radius: 0.875rem;
+      max-height: 3rem;
+      padding: 0.875rem 1rem;
+    }
+
+    #logo_button {
+      background: none;
+      display: flex;
+      gap: 0.125rem;
+      padding: 0 0;
+    }
+
+    .item_blue {
+      background-color: $blue;
+    }
+
+    .item_green {
+      background-color: $green;
+    }
+
+    .item_yellow {
+      background-color: $yellow;
+
+      ::after {
+
+      }
+    }
+
+    .item_orange {
+      background-color: $orange;
+    }
+  }
 }
 
+#logo {
+  fill: $soft_black;
+
+  #logo_letters {
+    fill: $white;
+  }
+}
+
+#menu_button {
+  fill: $soft_grey;
+
+  #plus {
+    fill: $soft_black;
+  }
+}
+
+/*---------------------------------fin nav  */
+
+main {
+  > * {
+    margin-top: 0.5rem;
+  }
+}
+
+/*----------------------------------Section */
+
+#intro {
+  background-color: $dark_grey;
+  margin-top: 3.5rem;
+  padding: 4rem 0;
+}
+
+/*---------------------------------Section */
+
+#valeur {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: $blue;
+  border-radius: 2.5rem;
+  font-size: 0.875rem;
+  padding: 1.375rem 1.625rem;
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 250px;
+    gap: 0.125rem;
+
+    a {
+      font-size: 1rem;
+      color: $blue;
+      padding: 0.875rem 1rem;
+      background-color: $soft_black;
+      border-radius: 0.875rem;
+    }
+
+    #cross {
+      fill: none;
+
+      rect {
+        stroke: $soft_black;
+
+        :hover {
+          rx: 22px
+        }
+      }
+
+      path {
+        fill: $soft_black;
+      }
+    }
+  }
+}
+
+/*------------------------------------Section */
+#competences {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 4rem;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 4rem;
+    background-color: $white;
+    padding: 2.5rem;
+
+    .vector {
+      margin: 1rem 0 0 1rem;
+      fill: $soft_black;
+    }
+
+    div {
+
+      span {
+        display: block;
+        font-size: 0.75rem;
+        color: $back_grey;
+        margin-bottom: 1.25rem;
+      }
+
+      p {
+        margin: 1.25rem 0 0 2rem;
+        color: $back_grey;
+        font-size: 0.875rem;
+        font-family: "KH Teka", sans-serif;
+      }
+    }
+  }
+}
+
+/*------------------------------------Section */
+#languages {
+  padding: 2.25rem 0;
+  background-color: $soft_grey;
+  border-radius: 4rem;
+  overflow: scroll;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+/*------------------------------------Section */
+#projets {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+
+  > :nth-child(even) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5.5rem;
+    padding: 4rem 2.5rem 2.5rem;
+    flex-basis: calc(50% - 4px);
+    box-sizing: border-box;
+
+    &#projet_1 {
+      background-color: $orange;
+    }
+
+    &#projet_2 {
+      background-color: $yellow;
+      order: 1;
+    }
+  }
+
+  > :nth-child(odd) {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 1rem;
+    padding: 2.375rem 2.5rem 2.5rem;
+    flex: auto;
+    box-sizing: border-box;
+
+    #icon_directory {
+      margin: 2.5rem 0 0 2.5rem;
+      fill: $orange;
+    }
+
+    #icon_file {
+      margin: 2.5rem 0 0 2.5rem;
+      fill: $yellow;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      h3{
+        flex: auto;
+      }
+      aside {
+        flex-basis: 50%;
+        span {
+          display: block;
+          font-size: 0.75rem;
+          color: $back_grey;
+          margin-bottom: 1.25rem;
+        }
+
+        p {
+          margin: 1.25rem 0 1.25rem 2rem;
+          color: $back_grey;
+          font-size: 0.875rem;
+          font-family: "KH Teka", sans-serif;
+        }
+        a {
+          font-size: 1rem;
+          padding: 0.875rem 1rem;
+          background-color: $orange;
+          border-radius: 0.875rem;
+        }
+
+      }
+    }
+
+
+  }
+}
