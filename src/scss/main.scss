@@ -2,6 +2,8 @@ $white: #E9E9E9;
 $soft_grey: #BBBBBB;
 $back_grey: #9A9A9A;
 $dark_grey: #6C6C6C;
+$title_grey: #4F4F4F;
+$input: #363636;
 $soft_black: #202020;
 $orange: #FF573B;
 $blue: #0988F0;
@@ -18,6 +20,23 @@ body {
   background-color: $back_grey;
   padding: 0.5rem;
 }
+
+.buttons {
+  display: flex;
+  gap: 0.25rem;
+
+  a {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.875rem;
+
+    &.second_button {
+      border: 1px solid $soft_black;
+    }
+  }
+}
+
 
 /*---------------------------------------nav  */
 header {
@@ -47,32 +66,30 @@ header {
       padding: 0 0;
     }
 
-    .item_blue {
-      background-color: $blue;
-    }
-
-    .item_green {
-      background-color: $green;
-    }
-
-    .item_yellow {
-      background-color: $yellow;
-
-      ::after {
-
+    .item {
+      &_blue {
+        background-color: $blue;
       }
-    }
 
-    .item_orange {
-      background-color: $orange;
+      &_green {
+        background-color: $green;
+      }
+
+      &_yellow {
+        background-color: $yellow;
+      }
+
+      &_orange {
+        background-color: $orange;
+      }
     }
   }
 }
 
-#logo {
+.logo {
   fill: $soft_black;
 
-  #logo_letters {
+  .logo_letters {
     fill: $white;
   }
 }
@@ -86,7 +103,6 @@ header {
 }
 
 /*---------------------------------fin nav  */
-
 main {
   > * {
     margin-top: 0.5rem;
@@ -94,15 +110,17 @@ main {
 }
 
 /*----------------------------------Section */
-
 #intro {
   background-color: $dark_grey;
   margin-top: 3.5rem;
   padding: 4rem 0;
+
+  .first_button {
+    background-color: $blue;
+  }
 }
 
 /*---------------------------------Section */
-
 #valeur {
   display: flex;
   align-items: center;
@@ -112,18 +130,13 @@ main {
   font-size: 0.875rem;
   padding: 1.375rem 1.625rem;
 
-  div {
-    display: flex;
+  .buttons {
     justify-content: flex-end;
     min-width: 250px;
-    gap: 0.125rem;
 
-    a {
-      font-size: 1rem;
+    .first_button {
       color: $blue;
-      padding: 0.875rem 1rem;
       background-color: $soft_black;
-      border-radius: 0.875rem;
     }
 
     #cross {
@@ -146,7 +159,8 @@ main {
 
 /*------------------------------------Section */
 #competences {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
   margin-top: 4rem;
 
@@ -154,6 +168,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    aspect-ratio: 1;
     border-radius: 4rem;
     background-color: $white;
     padding: 2.5rem;
@@ -164,7 +179,6 @@ main {
     }
 
     div {
-
       span {
         display: block;
         font-size: 0.75rem;
@@ -184,22 +198,22 @@ main {
 
 /*------------------------------------Section */
 #languages {
-  padding: 2.25rem 0;
+  padding: 2.25rem 5rem;
   background-color: $soft_grey;
   border-radius: 4rem;
   overflow: scroll;
 
   ul {
     display: flex;
-    justify-content: space-around;
+    gap: 10rem;
   }
 }
 
 /*------------------------------------Section */
 #projets {
-  display: flex;
+  display: grid;
   gap: 0.5rem;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
   margin-top: 4rem;
 
   > :nth-child(even) {
@@ -208,8 +222,6 @@ main {
     align-items: center;
     border-radius: 5.5rem;
     padding: 4rem 2.5rem 2.5rem;
-    flex-basis: calc(50% - 4px);
-    box-sizing: border-box;
 
     &#projet_1 {
       background-color: $orange;
@@ -228,28 +240,42 @@ main {
     justify-content: space-between;
     border-radius: 1rem;
     padding: 2.375rem 2.5rem 2.5rem;
-    flex: auto;
-    box-sizing: border-box;
+    aspect-ratio: 1;
 
     #icon_directory {
       margin: 2.5rem 0 0 2.5rem;
       fill: $orange;
+
+      & + div {
+        .first_button {
+          background-color: $orange;
+        }
+      }
     }
 
     #icon_file {
       margin: 2.5rem 0 0 2.5rem;
       fill: $yellow;
+
+      & + div {
+        .first_button {
+          background-color: $yellow;
+        }
+      }
     }
 
     div {
       display: flex;
-      justify-content: space-between;
 
-      h3{
+      h3 {
         flex: auto;
+        font-size: 2.5rem;
+        margin-top: 2rem;
       }
+
       aside {
         flex-basis: 50%;
+
         span {
           display: block;
           font-size: 0.75rem;
@@ -258,21 +284,168 @@ main {
         }
 
         p {
-          margin: 1.25rem 0 1.25rem 2rem;
+          padding: 1.25rem 1.25rem 1.25rem 2rem;
           color: $back_grey;
           font-size: 0.875rem;
           font-family: "KH Teka", sans-serif;
         }
-        a {
-          font-size: 1rem;
-          padding: 0.875rem 1rem;
-          background-color: $orange;
-          border-radius: 0.875rem;
+      }
+    }
+  }
+}
+
+/*---------------------------------------------------Section */
+#formations {
+  margin-top: 4rem;
+
+  h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 3.5rem;
+    color: $title_grey;
+  }
+
+  > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    article {
+      background-color: $white;
+      border-radius: 2.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      aspect-ratio: 1 / 1.5;
+
+      > div {
+        padding: 2rem 2.5rem 2.5rem;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.75rem;
+          color: $dark_grey;
+          padding-left: 2rem;
+          box-sizing: border-box;
         }
 
+        h3 {
+          margin-top: 0.75rem;
+          font-size: 2rem;
+          font-family: "KH Teka", sans-serif;
+          font-weight: 300;
+        }
+
+        .arrow {
+          margin-top: 2rem;
+          fill: $soft_black;
+          stroke: $white;
+          stroke-width: 2;
+        }
+      }
+
+      .illustration {
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+/*---------------------------------------------------Section */
+#formulaire {
+  max-width: 50%;
+  background-color: $soft_black;
+  border-radius: 2.5rem;
+  padding: 1.125rem 0.5rem 0.5rem;
+
+  div {
+    display: flex;
+    padding-left: 2rem;
+    gap: 0.5rem;
+
+    h2 {
+      color: $white;
+      font-size: 0.875rem;
+      width: 25%;
+    }
+
+    p {
+      width: 30%;
+      color: $dark_grey;
+      font-family: "KH Teka", sans-serif;
+    }
+  }
+
+  form {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+
+      input, textarea {
+        font-size: 3rem;
+        padding: 2rem 1.5rem;
+        background-color: $input;
+        color: $white;
+        border-radius: 2rem;
+        border: none;
+        font-family: "KH Teka Mono TRIAL", monospace;
       }
     }
 
+    button {
+      border: none;
+      text-decoration: none;
+      padding: 0;
+      cursor: pointer;
+      background: none;
+    }
+  }
+}
 
+/*---------------------------------------------------Section */
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: 1fr auto;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  nav, section {
+    padding: 1.75rem 2rem;
+    border-radius: 2.5rem;
+    background-color: $white;
+
+    ul {
+      color: $back_grey;
+      padding-left: 1.5rem;
+    }
+  }
+
+  div {
+    background-color: #FF573B;
+    border-radius: 2.5rem;
+    aspect-ratio: 1;
+  }
+
+  nav {
+    grid-row: 1 / 3;
+    grid-column: 3;
+  }
+
+  a {
+    display: block;
+    grid-row: 2;
+    grid-column: 4 / 6;
   }
 }
