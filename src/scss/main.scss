@@ -71,6 +71,9 @@ header {
       gap: 0.125rem;
       padding: 0 0;
     }
+    .item_big{
+      cursor: pointer;
+    }
 
     .item {
       &_blue {
@@ -96,6 +99,7 @@ header {
 
 #menu_button {
   fill: $soft_grey;
+  cursor: pointer;
   #plus {
     fill: $soft_black;
 
