@@ -96,9 +96,20 @@ header {
 
 #menu_button {
   fill: $soft_grey;
-
   #plus {
     fill: $soft_black;
+
+    #vertical, #horizontal {
+      transform-origin: center;
+      transition: transform 0.5s ease;
+    }
+
+    .rotate90{
+      transform: rotate(-90deg);
+    }
+    .rotate180{
+      transform: rotate(-180deg);
+    }
   }
 }
 
