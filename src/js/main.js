@@ -1,39 +1,66 @@
-let menu_buttons = document.getElementById('menu_button');
+let menu_button = document.getElementById('menu_button');
 let vertical = document.getElementById('vertical');
 let horizontal = document.getElementById('horizontal');
-let items = document.querySelectorAll('[class*="item"]');
-let bigs = document.querySelectorAll('[class*="big"]');
-let profil_item =document.getElementById('profil');
-let profils = document.querySelectorAll('[class*="profil"]');
-items.forEach(item => {
+let items_list = document.querySelectorAll('[class*="item"]');
+
+
+items_list.forEach(item => {
     item.classList.add('hidden');
 })
-menu_buttons.addEventListener("click", () => {
+function hidden_menu(items){
+    items.forEach((e, i) => {
+        if (e.classList.contains('hidden')) {
+            setTimeout(() => {
+                e.classList.remove('hidden');
+            }, i * 100);
+        } else {
+            setTimeout(() => {
+                e.classList.add('hidden');
+            }, (items.length - 1 - i) * 100);
+        }
+    })
+}
+function setupToggle(name) {
+    let button = document.getElementById(name);
+    let elements = document.querySelectorAll(`[class*="${name}"]`);
+
+    button.addEventListener('click', () => {
+        button.classList.toggle('clicked');
+        hidden_menu(elements);
+    });
+}
+menu_button.addEventListener("click", () => {
     vertical.classList.toggle('rotate90')
     horizontal.classList.toggle('rotate180')
-    bigs.forEach((big, i) => {
-        if (big.classList.contains('hidden')) {
-            setTimeout(() => {
-                big.classList.remove('hidden');
-            }, i * 100);
-        } else {
-            setTimeout(() => {
-                big.classList.add('hidden');
-            }, (bigs.length - 1 - i) * 100);
-        }
-    })
+    let bigs = document.querySelectorAll('[class*="big"]');
+    hidden_menu(bigs);
 })
-profil_item.addEventListener('click', (e) => {
-    profil_item.classList.add('clicked');
-    profils.forEach((profil, i) => {
-        if (profil.classList.contains('hidden')) {
-            setTimeout(() => {
-                profil.classList.remove('hidden');
-            }, i * 100);
+setupToggle('profil');
+setupToggle('valeur');
+setupToggle('projet');
+setupToggle('formation');
+
+
+
+
+let texts = document.querySelectorAll('.opacity');
+let boxes = document.querySelectorAll('.rounded');
+function checkVisibility(elements) {
+    elements.forEach(element => {
+        let e = element.getBoundingClientRect();
+        let isVisible = e.top < window.innerHeight - e.height/2 && e.bottom > e.height/2;
+
+        if (isVisible) {
+            element.classList.remove('noVisible');
         } else {
-            setTimeout(() => {
-                profil.classList.add('hidden');
-            }, (bigs.length - 1 - i) * 100);
+            element.classList.add('noVisible');
         }
-    })
-})
+    });
+}
+function allCheck(){
+    checkVisibility(texts)
+    checkVisibility(boxes)
+}
+
+document.addEventListener("DOMContentLoaded", allCheck);
+window.addEventListener('scroll', allCheck);
