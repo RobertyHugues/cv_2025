@@ -30,6 +30,11 @@ body {
     font-size: 1rem;
     padding: 0.875rem 1rem;
     border-radius: 0.875rem;
+    transition: border-radius 0.25s;
+
+    &:hover{
+      border-radius: 1.5rem;
+    }
 
     &.second_button {
       border: 1px solid $soft_black;
@@ -59,9 +64,10 @@ body {
 
 /*---------------------------------------nav  */
 header {
-  position: absolute;
-  right: 0;
+  position: fixed;
+  top: 0.5rem;
   left: 0.5rem;
+  z-index: 1000;
   font-size: 1.375rem;
 
   #menu {
@@ -285,7 +291,6 @@ main {
   }
 }
 
-
 /*------------------------------------Section */
 #projets {
   display: grid;
@@ -337,6 +342,7 @@ main {
       & + div {
         .first_button {
           background-color: $orange;
+          min-width: 100px;
         }
       }
     }
@@ -567,6 +573,14 @@ main {
       padding: 0;
       cursor: pointer;
       background: none;
+      svg{
+        border-radius: 2rem;
+        transition: border-radius 0.25s;
+        &:hover{
+          border-radius: 1.5rem;
+        }
+      }
+
     }
   }
 }
@@ -599,8 +613,12 @@ footer {
   div {
     background-color: #FF573B;
     border-radius: 2.5rem;
-    transition: border-radius 1s ease;
+    transition: border-radius 0.25s;
     aspect-ratio: 1;
+    &:hover{
+      border-radius: 4rem;
+
+    }
     &.noVisible {
       border-radius: 1rem;
     }
